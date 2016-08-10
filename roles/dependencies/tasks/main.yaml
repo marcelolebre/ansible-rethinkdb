@@ -1,0 +1,21 @@
+---
+- name: Install Python
+  become: true
+  raw: sudo apt-get -y install python-simplejson
+
+- name: Add Python Software Properties to add a PPA to Ubuntu
+  become: true
+  apt: pkg=python-software-properties
+
+- name: Add RethinkDB Repo to Apt
+  become: true
+  raw: source /etc/lsb-release && echo "deb http://download.rethinkdb.com/apt $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
+
+- name: Get Rethinkdb apt pubkey
+  become: true
+  raw: wget -qO- https://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
+
+- name: Update ubuntu with new PPA
+  apt: update_cache=yes
+  become: true
+      

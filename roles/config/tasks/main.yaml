@@ -1,0 +1,5 @@
+---
+    - name: Config rethinkdb instance1.conf on instances.d
+      template: src='instance1.conf.j2' dest='/etc/rethinkdb/instances.d/instance1.conf' group=root owner=root mode=0644
+      become: true
+      

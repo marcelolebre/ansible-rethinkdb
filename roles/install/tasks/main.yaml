@@ -1,0 +1,4 @@
+---
+    - name: Setup Rethinkdb
+      become: true
+      apt: pkg=rethinkdb

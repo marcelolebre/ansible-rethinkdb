@@ -1,0 +1,5 @@
+---
+    - name: Launch Rethinkdb
+      become: true
+      command: /etc/init.d/rethinkdb restart
+      
